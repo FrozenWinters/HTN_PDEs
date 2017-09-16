@@ -45,8 +45,11 @@
 
   function writeDOM(app) {
     var html ='';
-    html += '<div style="width:' + app.option.width + 'px; height:' + app.option.height +'px; background:blue;"></div>';
+    html += '<div class="screen" style="width:' + app.option.width + 'px; height:' + app.option.height +'px; background:blue;"></div>';
     app.wrapper.html(html);
+    app.wrapper.find('.screen').on("touchend mouseup", function (e) {
+			pressHandler.call(this, e, board);
+		});
   }
 
   window.App = App;
