@@ -1,4 +1,4 @@
-//;(function ($, window, document, firebase) {
+;(function ($, window, document, firebase) {
 
   //Firebase setup
   var config = {
@@ -15,15 +15,15 @@
   var db = firebase.database();
 
   function reset(){
-    db.child('Counter').child('count').set(0);
+    db.ref().child('Counter').child('count').set(0);
   }
 
   function increment(){
     var value;
-    db.child('Counter').child('count').once("value", function(snapshot) {
+    db.ref().child('Counter').child('count').once("value", function(snapshot) {
       value = snapshot.val();
     });
-    db.child('Counter').child('count').set(value + 1);
+    db.ref().child('Counter').child('count').set(value + 1);
   }
 
   //Seting up the DOM
@@ -39,8 +39,8 @@
   }
 
   App.defaults = {
-    width: 15,
-    height: 25
+    width: 300,
+    height: 100
   };
 
   function writeDOM(app) {
@@ -48,7 +48,11 @@
     html += '<div style="width:' + app.option.width + 'px; height:' + app.option.height +'px; background:blue;"></div>';
     app.wrapper.html(html);
   }
-//}(jQuery, window, document, firebase));
+
+  window.App = App;
+  window.reset = reset;
+  window.increment = increment;
+}(jQuery, window, document, firebase));
 
 ;(function(){
   $(document).ready(function() {
