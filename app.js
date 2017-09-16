@@ -26,6 +26,11 @@
     db.ref().child('Counter').child('count').set(value + 1);
   }
 
+  function push_coordinates(x, y){
+    db.ref().child('Position').child('x_val').set(x);
+    db.ref().child('Position').child('y_val').set(y);
+  }
+
   //Seting up the DOM
 
   function App(id, option){
@@ -39,8 +44,8 @@
   }
 
   App.defaults = {
-    width: 300,
-    height: 100
+    width: 500,
+    height: 500
   };
 
   function writeDOM(app) {
@@ -48,7 +53,10 @@
     html += '<div class="screen" style="width:' + app.option.width + 'px; height:' + app.option.height +'px; background:blue;"></div>';
     app.wrapper.html(html);
     app.wrapper.find('.screen').on("touchend mouseup", function (e) {
-			pressHandler.call(this, e, board);
+      var x_val = e.pageX - $(this).offset().left;
+      var y_val = e.pageY - $(this).offset().top;
+      push_coordinates(x_val, y_val);
+			//pressHandler.call(this, e, board);
 		});
   }
 
@@ -61,7 +69,5 @@
   $(document).ready(function() {
     var test = new App('#g_container', {});
     reset();
-    increment();
-    increment();
   });
 }());
