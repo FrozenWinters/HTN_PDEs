@@ -1,4 +1,4 @@
-;(function ($, window, document) {
+//;(function ($, window, document, firebase) {
 
   //Firebase setup
   var config = {
@@ -11,6 +11,20 @@
   };
 
   firebase.initializeApp(config);
+
+  var db = firebase.database();
+
+  function reset(){
+    db.child('Counter').child('count').set(0);
+  }
+
+  function increment(){
+    var value;
+    db.child('Counter').child('count').once("value", function(snapshot) {
+      value = snapshot.val();
+    });
+    db.child('Counter').child('count').set(value + 1);
+  }
 
   //Seting up the DOM
 
@@ -34,10 +48,13 @@
     html += '<div style="width:' + app.option.width + 'px; height:' + app.option.height +'px; background:blue;"></div>';
     app.wrapper.html(html);
   }
-}
+//}(jQuery, window, document, firebase));
 
 ;(function(){
   $(document).ready(function() {
     var test = new App('#g_container', {});
+    reset();
+    increment();
+    increment();
   });
 }());
