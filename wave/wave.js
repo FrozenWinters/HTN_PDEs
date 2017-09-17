@@ -129,7 +129,7 @@ function add_graphics(is_spect) {
   };
 
   now = Date.now();
-  myrot = new THREE.Euler(Math.PI/2,0,0, 'XYZ');
+  myrot = new THREE.Euler(0, Math.PI / 2,0, 'XYZ');
 
   animate = function() {
     var dt;
