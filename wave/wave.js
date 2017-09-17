@@ -129,6 +129,7 @@ function add_graphics(is_spect) {
   };
 
   now = Date.now();
+  myrot = new THREE.Euler(Math.PI/2,0,0, 'XYZ');
 
   animate = function() {
     var dt;
@@ -140,6 +141,7 @@ function add_graphics(is_spect) {
       renderer.render(scene, camera);
     }
     controls.update();
+    mesh.setRotationFromEuler(myrot);
 
     if(!window.is_pull){
       dt = time_temp - now;
