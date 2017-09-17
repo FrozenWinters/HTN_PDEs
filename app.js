@@ -17,7 +17,6 @@
   function push_mesh(){
     time_now = Date.now();
     v = geometry.vertices;
-    console.log([time_now, v]);
     heights = [];
     for (a = 1; a <= window.mesh_res; a++) {
       for (b = 1; b <= window.mesh_res; b++) {
@@ -28,20 +27,18 @@
     db.ref().child('Mesh').set([time_now, heights]);
   }
 
+  window.push_mesh = push_mesh;
+
   function syndicate(){
     console.log('Syndicate called!');
-    /*setInterval(function(){
-      console.log('Alarm');
-      push_mesh();
-    }, 5000);*/
     push_mesh();
   }
 
   function subscribe(){
     db.ref().child('Mesh').on("value", function(s){
+      console.log('Update recieved!');
       window.wave_heights = s.val();
       window.is_pull = true;
-      console.log(window.wave_heights);
     });
   }
 
@@ -69,7 +66,7 @@
     html += '<div class="receive" style="width:' + app.option.width + 'px; height:'
       + app.option.height +'px; background:red; z-index: 10; position:relative; top: -310px; left: 150px;"></div>';
     app.wrapper.html(html);
-    app.wrapper.find('.send').one("touchend mouseup", function (e) {
+    app.wrapper.find('.send').on("touchend mouseup", function (e) {
       syndicate();
 		});
     app.wrapper.find('.receive').one("touchend mouseup", function (e) {
