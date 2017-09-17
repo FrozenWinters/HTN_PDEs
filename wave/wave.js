@@ -114,9 +114,9 @@ function add_graphics() {
           controls.connect();
           controls.update();
           element.addEventListener('click', fullscreen, false);
-          window.removeEventListener('devicemotion', setOrientationControls, true);
+          window.removeEventListener('deviceorientation', setOrientationControls, true);
         }
-    window.addEventListener('devicemotion', setOrientationControls, true);
+    window.addEventListener('deviceorientation', setOrientationControls, true);
 
     //Stereo fiddling begin
     effect = new THREE.StereoEffect(renderer);
