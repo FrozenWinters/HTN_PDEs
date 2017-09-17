@@ -90,11 +90,22 @@
   window.App = App;
 }(jQuery, window, document, firebase));
 
+function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+
 ;(function(){
   $(document).ready(function() {
     window.is_pull = false;
     window.is_push = false;
     is_spect = true;
+    console.log(getParameterByName('sten'));
     add_graphics(is_spect);
     var test = new App('#g_container', {});
   });

@@ -97,9 +97,9 @@ function add_graphics(is_spect) {
     controls.noZoom = true;*/
     if(is_spect){
       controls = new THREE.DeviceOrientationControls(camera, true);
-      camera.position.z = 0;
+      camera.position.z = 50;
       camera.position.y = 120;
-      camera.position.x = 80;
+      camera.position.x = 100;
       controls.connect();
       controls.update();
     } else{
