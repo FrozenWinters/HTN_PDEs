@@ -104,7 +104,7 @@ function add_graphics() {
 
     // trackball pls
     // Our preferred controls via DeviceOrientation
-        function setOrientationControls(e) {
+    function setOrientationControls(e) {
           if (!e.alpha) {
             return;
           }
@@ -114,7 +114,7 @@ function add_graphics() {
           element.addEventListener('click', fullscreen, false);
           window.removeEventListener('deviceorientation', setOrientationControls, true);
         }
-        window.addEventListener('deviceorientation', setOrientationControls, true);
+    window.addEventListener('deviceorientation', setOrientationControls, true);
 
 
     //Stereo fiddling begin
