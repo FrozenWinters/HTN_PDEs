@@ -2,6 +2,7 @@
 
 function add_graphics() {
   var C, C2, D, DAMPING, DELTA_X, DELTA_X2, DELTA_Z, DELTA_Z2, H, MAX_DT, MAX_ITERATRED_DT, MAX_Y, N, SIGMA, SIM_SPEED, W, animate, camera, controls, geometry, hitTest, idx, init, initGeometry, integrate, mesh, now, projector, renderer, scene;
+  var noSleep;
 
   mesh = null;
 
@@ -53,6 +54,9 @@ function add_graphics() {
 
   init = function() {
     var cubeGeometry, cubeMesh, face, j, len, light, materials, matrix, ref, updateViewport;
+    noSleep = new NoSleep();
+    noSleep.enable();
+
     camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 10000);
     camera.position.z = 200;
     camera.position.y = 150;
