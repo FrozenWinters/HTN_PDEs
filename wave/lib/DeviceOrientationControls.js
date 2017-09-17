@@ -25,7 +25,7 @@
     deviceOrientation.alpha = 120;
     deviceOrientation.gamma = 0;
     console.log(evt);
-    deviceOrientation.beta += 90;
+    deviceOrientation.beta = 45;
   }
   window.addEventListener('deviceorientation', onDeviceOrientationChangeEvent, false);
 
