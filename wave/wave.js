@@ -141,9 +141,9 @@ function add_graphics(is_spect) {
       renderer.render(scene, camera);
     }
     controls.update();
-    if(is_spect){
+    /*if(is_spect){
       mesh.setRotationFromEuler(myrot);
-    }
+    }*/
 
     if(!window.is_pull){
       dt = time_temp - now;
