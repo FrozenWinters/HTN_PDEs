@@ -14,18 +14,6 @@
 
   var db = firebase.database();
 
-  function reset(){
-    db.ref().child('Counter').child('count').set(0);
-  }
-
-  function increment(){
-    var value;
-    db.ref().child('Counter').child('count').once("value", function(snapshot) {
-      value = snapshot.val();
-    });
-    db.ref().child('Counter').child('count').set(value + 1);
-  }
-
   function push_mesh(){
     time_now = Date.now();
     v = geometry.vertices;
@@ -38,6 +26,15 @@
       }
     }
     db.ref().child('Mesh').set([time_now, heights]);
+  }
+
+  function syndicate(){
+    console.log('Syndicate called!');
+    /*setInterval(function(){
+      console.log('Alarm');
+      push_mesh();
+    }, 5000);*/
+    push_mesh();
   }
 
   function subscribe(){
@@ -72,19 +69,15 @@
     html += '<div class="receive" style="width:' + app.option.width + 'px; height:'
       + app.option.height +'px; background:red; z-index: 10; position:relative; top: -310px; left: 150px;"></div>';
     app.wrapper.html(html);
-    app.wrapper.find('.send').on("touchend mouseup", function (e) {
-      var x_val = e.pageX - $(this).offset().left;
-      var y_val = e.pageY - $(this).offset().top;
-      push_mesh(x_val, y_val);
+    app.wrapper.find('.send').one("touchend mouseup", function (e) {
+      syndicate();
 		});
-    app.wrapper.find('.receive').on("touchend mouseup", function (e) {
+    app.wrapper.find('.receive').one("touchend mouseup", function (e) {
       subscribe();
     });
   }
 
   window.App = App;
-  window.reset = reset;
-  window.increment = increment;
 }(jQuery, window, document, firebase));
 
 ;(function(){
@@ -92,6 +85,5 @@
     window.is_pull = false;
     add_graphics();
     var test = new App('#g_container', {});
-    reset();
   });
 }());
