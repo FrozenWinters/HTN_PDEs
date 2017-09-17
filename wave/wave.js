@@ -145,7 +145,9 @@ function add_graphics() {
     requestAnimationFrame(animate);
     effect.render(scene, camera);
     //renderer.render(scene, camera);
+    if (controls){
     controls.update();
+	}
 
     if(!window.is_pull){
       dt = time_temp - now;
