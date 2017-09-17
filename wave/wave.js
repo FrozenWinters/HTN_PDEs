@@ -56,6 +56,8 @@ function add_graphics() {
     var cubeGeometry, cubeMesh, face, j, len, light, materials, matrix, ref, updateViewport;
     noSleep = new NoSleep();
     noSleep.enable();
+    container = document.createElement('div');
+    document.body.appendChild(container);
 
     camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 10000);
     camera.position.z = 200;
@@ -133,7 +135,8 @@ function add_graphics() {
     updateViewport();
     window.addEventListener('resize', updateViewport);
     document.addEventListener('mousedown', hitTest);
-    return $('#w_container').append(renderer.domElement);
+    container.addEventListener('click', fullscreen, false);
+    return container.appendChild(renderer.domElement);
   };
 
   now = Date.now();
@@ -268,6 +271,18 @@ function add_graphics() {
       return results;
     }
   };
+
+  function fullscreen() {
+  if (container.requestFullscreen) {
+    container.requestFullscreen();
+  } else if (container.msRequestFullscreen) {
+    container.msRequestFullscreen();
+  } else if (container.mozRequestFullScreen) {
+    container.mozRequestFullScreen();
+  } else if (container.webkitRequestFullscreen) {
+    container.webkitRequestFullscreen();
+  }
+}
 
   init();
 
