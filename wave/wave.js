@@ -111,6 +111,9 @@ function add_graphics() {
             return;
           }
           controls = new THREE.DeviceOrientationControls(camera, true);
+          camera.position.z = 0;
+          camera.position.y = 250;
+          camera.position.x = 0;
           controls.connect();
           controls.update();
           element.addEventListener('click', fullscreen, false);
