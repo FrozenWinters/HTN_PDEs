@@ -91,14 +91,14 @@ function add_graphics() {
     scene.add(cubeMesh);
     renderer = new THREE.WebGLRenderer();
     //controls = new THREE.OrbitControls(camera, renderer.domElement);
-    /*controls = new THREE.OrbitControls(camera, renderer.domElement);
+    controls = new THREE.OrbitControls(camera, renderer.domElement);
     controls.target.set(
       camera.position.x + 0.15,
       camera.position.y,
       camera.position.z
     );
     controls.noPan = true;
-    controls.noZoom = true;*/
+    controls.noZoom = false;
     controls = new THREE.TrackballControls(camera);
     //projector = new THREE.Projector();
 
