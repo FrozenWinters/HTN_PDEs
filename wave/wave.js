@@ -112,6 +112,7 @@ function add_graphics() {
     updateViewport();
     window.addEventListener('resize', updateViewport);
     document.addEventListener('mousedown', hitTest);
+    renderer.domElement.addEventListener('click', fullscreen);
     return $('#w_container').append(renderer.domElement);
   };
 
@@ -166,6 +167,18 @@ function add_graphics() {
     }
     return results;
   };
+
+  function fullscreen() {
+    if (container.requestFullscreen) {
+      container.requestFullscreen();
+    } else if (container.msRequestFullscreen) {
+      container.msRequestFullscreen();
+    } else if (container.mozRequestFullScreen) {
+      container.mozRequestFullScreen();
+    } else if (container.webkitRequestFullscreen) {
+      container.webkitRequestFullscreen();
+    }
+  }
 
   set_state = function(stamp) {
     v = geometry.vertices;
