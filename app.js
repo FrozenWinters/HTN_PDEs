@@ -47,7 +47,7 @@
   function App(id, option){
     this.wrapper = $(id);
     this.option = $.extend({}, App.defaults, option);
-    writeDOM(this);
+    //writeDOM(this);
   }
 
   App.prototype = {
@@ -83,5 +83,6 @@
     window.is_push = false;
     add_graphics();
     var test = new App('#g_container', {});
+    subscribe();
   });
 }());
