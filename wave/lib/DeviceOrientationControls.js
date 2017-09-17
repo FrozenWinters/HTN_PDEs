@@ -21,8 +21,9 @@
   var screenOrientation = window.orientation || 0;
 
   function onDeviceOrientationChangeEvent(evt) {
-    evt.gamma += 45;
     deviceOrientation = evt;
+    console.log(evt);
+    deviceorientation.gamma += 270;
   }
   window.addEventListener('deviceorientation', onDeviceOrientationChangeEvent, false);
 
