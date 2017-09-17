@@ -98,6 +98,21 @@ function add_graphics() {
     controls = new THREE.TrackballControls(camera);
     //projector = new THREE.Projector();
 
+    // trackball pls
+    // Our preferred controls via DeviceOrientation
+        function setOrientationControls(e) {
+          if (!e.alpha) {
+            return;
+          }
+          controls = new THREE.DeviceOrientationControls(camera, true);
+          controls.connect();
+          controls.update();
+          element.addEventListener('click', fullscreen, false);
+          window.removeEventListener('deviceorientation', setOrientationControls, true);
+        }
+        window.addEventListener('deviceorientation', setOrientationControls, true);
+
+
     //Stereo fiddling begin
     effect = new THREE.StereoEffect(renderer);
     //fidling end
