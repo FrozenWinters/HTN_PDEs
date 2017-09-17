@@ -8,13 +8,27 @@
   <script src='wave/lib/OrbitControls.js'></script>
   <script src='wave/lib/StereoEffect.js'></script>
   <script src='wave/lib/no-sleep.js'></script>
-  <script src='wave/wave.js'></script>
-  <script src="app.js"></script>
+  <style>
+      body {
+        margin: 0px;
+        overflow: hidden;
+      }
+      #webglviewer {
+        bottom: 0;
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+      }
+    </style>
 </head>
 <body>
   <div id ="toplevel">
     <div id="w_container"></div>
     <div id="g_container"></div>
   </div>
+  <div id="webglviewer"></div>
+  <script src='wave/wave.js'></script>
+  <script src="app.js"></script>
 </body>
 </html>
