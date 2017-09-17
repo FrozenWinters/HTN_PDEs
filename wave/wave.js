@@ -17,7 +17,7 @@ function add_graphics() {
 
   projector = null;
 
-  N = 40;
+  N = 60;
 
   window.mesh_res = N;
 
@@ -78,7 +78,7 @@ function add_graphics() {
     ref = cubeGeometry.faces;
     for (j = 0, len = ref.length; j < len; j++) {
       face = ref[j];
-      face.materialIndex = 0;
+      face.materialIndex = 1;
     }
     cubeGeometry.faces[2].materialIndex = 1;
     cubeMesh = new THREE.Mesh(cubeGeometry, new THREE.MeshFaceMaterial(materials));
@@ -87,15 +87,16 @@ function add_graphics() {
     scene.add(cubeMesh);
     renderer = new THREE.WebGLRenderer();
     //controls = new THREE.OrbitControls(camera, renderer.domElement);
-    controls = new THREE.OrbitControls(camera, renderer.domElement);
+    /*controls = new THREE.OrbitControls(camera, renderer.domElement);
     controls.target.set(
       camera.position.x + 0.15,
       camera.position.y,
       camera.position.z
     );
     controls.noPan = true;
-    controls.noZoom = true;
-    projector = new THREE.Projector();
+    controls.noZoom = true;*/
+    controls = new THREE.TrackballControls(camera);
+    //projector = new THREE.Projector();
 
     //Stereo fiddling begin
     effect = new THREE.StereoEffect(renderer);
@@ -221,7 +222,7 @@ function add_graphics() {
   hitTest = function(e) {
     var index, intersects, j, len, p, raycaster, ref, results, vector, vertex, x, z;
     vector = new THREE.Vector3((e.clientX / window.innerWidth) * 2 - 1, -(e.clientY / window.innerHeight) * 2 + 1, 0.5);
-    projector.unprojectVector(vector, camera);
+    //projector.unprojectVector(vector, camera);
     raycaster = new THREE.Raycaster(camera.position, vector.sub(camera.position).normalize());
     console.log([mesh]);
     intersects = raycaster.intersectObjects([mesh]);
