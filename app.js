@@ -94,7 +94,7 @@
   $(document).ready(function() {
     window.is_pull = false;
     window.is_push = false;
-    is_spect = false;
+    is_spect = true;
     add_graphics(is_spect);
     var test = new App('#g_container', {});
   });

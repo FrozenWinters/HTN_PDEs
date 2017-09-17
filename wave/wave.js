@@ -95,7 +95,16 @@ function add_graphics(is_spect) {
     );
     controls.noPan = true;
     controls.noZoom = true;*/
-    controls = new THREE.TrackballControls(camera);
+    if(is_spect){
+      controls = new THREE.DeviceOrientationControls(camera, true);
+      camera.position.z = 0;
+      camera.position.y = 100;
+      camera.position.x = 0;
+      controls.connect();
+      controls.update();
+    } else{
+      controls = new THREE.TrackballControls(camera);
+    }
     //projector = new THREE.Projector();
 
     //Stereo fiddling begin
@@ -109,7 +118,7 @@ function add_graphics(is_spect) {
       effect.setSize(window.innerWidth, window.innerHeight);
       camera.aspect = window.innerWidth / window.innerHeight;
       camera.updateProjectionMatrix();
-      return controls.target.set(0, 0, 0);
+      if(controls.target) {controls.target.set(0, 0, 0);}
     };
     updateViewport();
     window.addEventListener('resize', updateViewport);
