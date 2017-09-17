@@ -85,14 +85,33 @@ function add_graphics() {
     cubeMesh.position.set(0, -D / 2, 0);
     scene.add(mesh);
     scene.add(cubeMesh);
-    controls = new THREE.TrackballControls(camera);
+    
+    //controls = new THREE.TrackballControls(camera);
+    
+    /** Gyroscope controls **/
+    function setOrientationControls(e) {
+        if (!e.alpha) {
+          return;
+        }
+        if (controls == null) {
+            controls = new THREE.DeviceOrientationControls(camera, true);
+            controls.connect();
+            controls.update();
+        }
+        window.removeEventListener('deviceorientation', setOrientationControls.bind(this));
+    }
+    window.addEventListener('deviceorientation', setOrientationControls, true);
+
+
+
     projector = new THREE.Projector();
     renderer = new THREE.WebGLRenderer();
     updateViewport = function() {
       renderer.setSize(window.innerWidth, window.innerHeight);
       camera.aspect = window.innerWidth / window.innerHeight;
       camera.updateProjectionMatrix();
-      return controls.target.set(0, 0, 0);
+      // return controls.target.set(0, 0, 0);
+      return;
     };
     updateViewport();
     window.addEventListener('resize', updateViewport);
@@ -107,7 +126,10 @@ function add_graphics() {
     time_temp = Date.now();
     requestAnimationFrame(animate);
     renderer.render(scene, camera);
+    
+    if (controls){
     controls.update();
+    }
 
     if(!window.is_pull){
       dt = time_temp - now;
