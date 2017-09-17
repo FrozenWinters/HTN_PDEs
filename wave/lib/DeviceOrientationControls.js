@@ -25,7 +25,7 @@
     deviceOrientation.alpha -= 45;
     deviceOrientation.gamma += 45;
     deviceOrientation.beta += 55;
-    console.log(evt);
+    //console.log(evt);
   }
   window.addEventListener('deviceorientation', onDeviceOrientationChangeEvent, false);
 
@@ -91,7 +91,7 @@ THREE.DeviceOrientationControls = function(object) {
 
 
   this.update = (function(delta) {
-
+    console.log('UPDATE!');
     console.log(deviceOrientation);
 
     return function(delta) {
