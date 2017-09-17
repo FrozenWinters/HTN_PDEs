@@ -101,7 +101,6 @@ function add_graphics(is_spect) {
       camera.position.y = 300;
       camera.position.x = -70;
       controls.connect();
-      console.log('up1');
       controls.update();
     } else{
       controls = new THREE.TrackballControls(camera);
@@ -266,8 +265,6 @@ function add_graphics(is_spect) {
     /*vector = new THREE.Vector3((e.clientX / window.innerWidth) * 2 - 1, -(e.clientY / window.innerHeight) * 2 + 1, 0.5);
     vector.unproject(camera);
     raycaster = new THREE.Raycaster(camera.position, vector.sub(camera.position).normalize());*/
-    console.log([mesh]);
-    console.log([mouse]);
     intersects = raycaster.intersectObjects([mesh], true);
     //intersects = raycaster.intersectObjects([mesh]);
     if (intersects.length) {
