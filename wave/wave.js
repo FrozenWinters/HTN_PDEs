@@ -139,6 +139,7 @@ function add_graphics(is_spect) {
     } else {
       renderer.render(scene, camera);
     }
+    mesh.setRotationFromEuler(myrot);
     controls.update();
     mesh.setRotationFromEuler(myrot);
 
