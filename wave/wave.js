@@ -85,11 +85,25 @@ function add_graphics() {
     cubeMesh.position.set(0, -D / 2, 0);
     scene.add(mesh);
     scene.add(cubeMesh);
-    controls = new THREE.TrackballControls(camera);
-    projector = new THREE.Projector();
     renderer = new THREE.WebGLRenderer();
+    //controls = new THREE.OrbitControls(camera, renderer.domElement);
+    controls = new THREE.OrbitControls(camera, renderer.domElement);
+    controls.target.set(
+      camera.position.x + 0.15,
+      camera.position.y,
+      camera.position.z
+    );
+    controls.noPan = true;
+    controls.noZoom = true;
+    projector = new THREE.Projector();
+
+    //Stereo fiddling begin
+    effect = new THREE.StereoEffect(renderer);
+    //fidling end
+
     updateViewport = function() {
       renderer.setSize(window.innerWidth, window.innerHeight);
+      effect.setSize(window.innerWidth, window.innerHeight);
       camera.aspect = window.innerWidth / window.innerHeight;
       camera.updateProjectionMatrix();
       return controls.target.set(0, 0, 0);
@@ -106,7 +120,8 @@ function add_graphics() {
     var dt;
     time_temp = Date.now();
     requestAnimationFrame(animate);
-    renderer.render(scene, camera);
+    effect.render(scene, camera);
+    //renderer.render(scene, camera);
     controls.update();
 
     if(!window.is_pull){
