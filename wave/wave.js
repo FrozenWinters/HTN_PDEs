@@ -17,7 +17,7 @@ function add_graphics() {
 
   projector = null;
 
-  N = 60;
+  N = 40;
 
   window.mesh_res = N;
 
