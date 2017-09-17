@@ -104,7 +104,7 @@ function getParameterByName(name, url) {
   $(document).ready(function() {
     window.is_pull = false;
     window.is_push = false;
-    is_spect = false;
+    is_spect = true;
     console.log(getParameterByName('sten'));
     add_graphics(is_spect);
     var test = new App('#g_container', {});
