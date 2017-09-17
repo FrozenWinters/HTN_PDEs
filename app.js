@@ -26,18 +26,18 @@
     db.ref().child('Counter').child('count').set(value + 1);
   }
 
-  function pushmesh(x, y){
-    db.ref().child('Position').child('x_val').set(x);
-    db.ref().child('Position').child('y_val').set(y);
+  function push_mesh(){
+    time_now = Date.now();
     v = geometry.vertices;
-    var points = [];
-    for(i = 0; i < mesh_res * mesh_res; i++){
-      points[i] = v[i].y;
-      if(!(i % 500))
-        console.log(v[i].y);
+    console.log([time_now, v]);
+    heights = [];
+    for (a = 1; a <= window.mesh_res; a++) {
+      for (b = 1; b <= window.mesh_res; b++) {
+        i = idx(a, b);
+        heights[i] = [v[i].y, v[i].uy];
+      }
     }
-    //db.ref().child('Mesh').set(points);
-    db.ref().child('Mesh').set(v);
+    db.ref().child('Mesh').set([time_now, heights]);
   }
 
   function subscribe(){
@@ -45,14 +45,6 @@
       window.wave_heights = s.val();
       window.is_pull = true;
       console.log(window.wave_heights);
-      /*v = geometry.vertices;
-      for(i = 0; i < mesh_res * mesh_res; i++){
-        v[i].y = (s.val())[i];
-      }
-      geometry.verticesNeedUpdate = true;
-      geometry.computeFaceNormals();
-      geometry.computeVertexNormals();
-      geometry.normalsNeedUpdate = true;*/
     });
   }
 
@@ -83,7 +75,7 @@
     app.wrapper.find('.send').on("touchend mouseup", function (e) {
       var x_val = e.pageX - $(this).offset().left;
       var y_val = e.pageY - $(this).offset().top;
-      pushmesh(x_val, y_val);
+      push_mesh(x_val, y_val);
 		});
     app.wrapper.find('.receive').on("touchend mouseup", function (e) {
       subscribe();
