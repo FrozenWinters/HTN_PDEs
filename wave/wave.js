@@ -54,7 +54,7 @@ function add_graphics(is_spect) {
   init = function() {
     var cubeGeometry, cubeMesh, face, j, len, light, materials, matrix, ref, updateViewport;
     camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 10000);
-    camera.position.z = 200;
+    camera.position.z = 100;
     camera.position.y = 150;
     camera.position.x = 100;
     scene = new THREE.Scene();
