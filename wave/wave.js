@@ -101,6 +101,7 @@ function add_graphics(is_spect) {
       camera.position.y = 100;
       camera.position.x = -70;
       controls.connect();
+      console.log('up1');
       controls.update();
     } else{
       controls = new THREE.TrackballControls(camera);
