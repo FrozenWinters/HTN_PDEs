@@ -80,6 +80,7 @@
 ;(function(){
   $(document).ready(function() {
     window.is_pull = false;
+    window.is_push = false;
     add_graphics();
     var test = new App('#g_container', {});
   });

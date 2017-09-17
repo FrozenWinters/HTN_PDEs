@@ -196,7 +196,11 @@ function add_graphics() {
     geometry.verticesNeedUpdate = true;
     geometry.computeFaceNormals();
     geometry.computeVertexNormals();
-    return geometry.normalsNeedUpdate = true;
+    geometry.normalsNeedUpdate = true;
+    if(window.is_push){
+      window.push_mesh();
+      window.is_push = false;
+    }
   };
 
   hitTest = function(e) {
@@ -221,7 +225,7 @@ function add_graphics() {
           results.push(void 0);
         }
       }
-      setTimeout(window.push_mesh, 5);
+      window.is_push = true;
       return results;
     }
   };
