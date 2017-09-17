@@ -99,7 +99,7 @@ function add_graphics() {
     );
     controls.noPan = true;
     controls.noZoom = true;*/
-    controls = new THREE.TrackballControls(camera);
+    // controls = new THREE.TrackballControls(camera);
     //projector = new THREE.Projector();
 
     // trackball pls
