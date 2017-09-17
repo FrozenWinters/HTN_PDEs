@@ -64,7 +64,7 @@ THREE.DeviceOrientationControls = function(object) {
 
   this.alpha = 0;
   this.beta = 0;
-  this.gamma = 0;
+  this.gamma = Math.PI / 2;
   this.orient = 0;
 
   this.alignQuaternion = new THREE.Quaternion();
@@ -186,4 +186,3 @@ THREE.DeviceOrientationControls = function(object) {
 };
 
 })();
-
