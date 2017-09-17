@@ -23,7 +23,7 @@
   function onDeviceOrientationChangeEvent(evt) {
     deviceOrientation = evt;
     console.log(evt);
-    //deviceOrientation.gamma += 270;
+    deviceOrientation.gamma += 90;
   }
   window.addEventListener('deviceorientation', onDeviceOrientationChangeEvent, false);
 
