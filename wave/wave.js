@@ -153,11 +153,13 @@ function add_graphics() {
 
   set_state = function(stamp) {
     v = geometry.vertices;
+    //console.log(window.wave_heights[1]);
+    heights = JSON.parse(window.wave_heights[1]);
     for (a = 1; a <= N; a++) {
       for (b = 1; b <= N; b++) {
         i = idx(a, b);
-        v[i].y = window.wave_heights[1][i][0];
-        v[i].uy = window.wave_heights[1][i][1];
+        v[i].y = heights[i][0];
+        v[i].uy = heights[i][1];
       }
     }
     geometry.verticesNeedUpdate = true;
@@ -219,7 +221,7 @@ function add_graphics() {
           results.push(void 0);
         }
       }
-      setTimeout(window.push_mesh, 50);
+      setTimeout(window.push_mesh, 5);
       return results;
     }
   };

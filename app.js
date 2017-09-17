@@ -24,7 +24,7 @@
         heights[i] = [v[i].y, v[i].uy];
       }
     }
-    db.ref().child('Mesh').set([time_now, heights]);
+    db.ref().child('Mesh').set([time_now, JSON.stringify(heights)]);
   }
 
   window.push_mesh = push_mesh;
