@@ -95,10 +95,10 @@ function add_graphics(is_spect) {
     );
     controls.noPan = true;
     controls.noZoom = true;*/
-    if(is_spect && false){
+    if(is_spect){
       controls = new THREE.DeviceOrientationControls(camera, true);
       camera.position.z = 10;
-      camera.position.y = 100;
+      camera.position.y = 300;
       camera.position.x = -70;
       controls.connect();
       console.log('up1');
