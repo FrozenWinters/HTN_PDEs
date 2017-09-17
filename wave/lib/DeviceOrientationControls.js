@@ -91,7 +91,6 @@ THREE.DeviceOrientationControls = function(object) {
 
 
   this.update = (function(delta) {
-    console.log('UPDATE!');
     console.log(deviceOrientation);
 
     return function(delta) {
@@ -104,6 +103,7 @@ THREE.DeviceOrientationControls = function(object) {
         //this.screenOrientation = orientation;
         //this.autoAlign = true;
       //}
+          console.log('UPDATE!');
 
       this.alpha = deviceOrientation.gamma ?
         THREE.Math.degToRad(deviceOrientation.alpha) : 0; // Z
