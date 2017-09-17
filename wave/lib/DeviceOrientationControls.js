@@ -22,9 +22,6 @@
 
   function onDeviceOrientationChangeEvent(evt) {
     deviceOrientation = evt;
-    deviceOrientation.alpha -= 45;
-    deviceOrientation.gamma += 45;
-    deviceOrientation.beta += 55;
     //console.log(evt);
   }
   window.addEventListener('deviceorientation', onDeviceOrientationChangeEvent, false);
@@ -104,6 +101,10 @@ THREE.DeviceOrientationControls = function(object) {
         //this.autoAlign = true;
       //}
           console.log('UPDATE!');
+
+          deviceOrientation.alpha -= 45;
+          deviceOrientation.gamma += 45;
+          deviceOrientation.beta += 55;
 
       this.alpha = deviceOrientation.gamma ?
         THREE.Math.degToRad(deviceOrientation.alpha) : 0; // Z
