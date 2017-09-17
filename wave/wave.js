@@ -126,7 +126,10 @@ function add_graphics() {
       effect.setSize(window.innerWidth, window.innerHeight);
       camera.aspect = window.innerWidth / window.innerHeight;
       camera.updateProjectionMatrix();
-      return controls.target.set(0, 0, 0);
+      if (controls){
+      	controls.target.set(0, 0, 0);
+      }
+      return;
     };
     updateViewport();
     window.addEventListener('resize', updateViewport);
