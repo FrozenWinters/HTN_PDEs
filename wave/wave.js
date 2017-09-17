@@ -104,7 +104,7 @@ function add_graphics() {
 
     // trackball pls
     // Our preferred controls via DeviceOrientation
-    /** function setOrientationControls(e) {
+    function setOrientationControls(e) {
           if (!e.alpha) {
             return;
           }
@@ -115,7 +115,6 @@ function add_graphics() {
           window.removeEventListener('deviceorientation', setOrientationControls, true);
         }
     window.addEventListener('deviceorientation', setOrientationControls, true);
-	**/
 
     //Stereo fiddling begin
     effect = new THREE.StereoEffect(renderer);
