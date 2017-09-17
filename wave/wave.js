@@ -169,14 +169,15 @@ function add_graphics() {
   };
 
   function fullscreen() {
-    if (container.requestFullscreen) {
-      container.requestFullscreen();
-    } else if (container.msRequestFullscreen) {
-      container.msRequestFullscreen();
-    } else if (container.mozRequestFullScreen) {
-      container.mozRequestFullScreen();
-    } else if (container.webkitRequestFullscreen) {
-      container.webkitRequestFullscreen();
+    dom_obj  = renderer.domElement;
+    if (dom_obj.requestFullscreen) {
+      dom_obj.requestFullscreen();
+    } else if (dom_obj.msRequestFullscreen) {
+      dom_obj.msRequestFullscreen();
+    } else if (dom_obj.mozRequestFullScreen) {
+      dom_obj.mozRequestFullScreen();
+    } else if (dom_obj.webkitRequestFullscreen) {
+      dom_obj.webkitRequestFullscreen();
     }
   }
 
