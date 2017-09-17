@@ -92,6 +92,8 @@ function add_graphics() {
     scene.add(mesh);
     scene.add(cubeMesh);
     renderer = new THREE.WebGLRenderer();
+    element = renderer.domElement;
+    
     //controls = new THREE.OrbitControls(camera, renderer.domElement);
     controls = new THREE.OrbitControls(camera, renderer.domElement);
     controls.target.set(
