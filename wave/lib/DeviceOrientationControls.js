@@ -92,6 +92,8 @@ THREE.DeviceOrientationControls = function(object) {
 
   this.update = (function(delta) {
 
+    console.log(deviceOrientation);
+
     return function(delta) {
 
       if (this.freeze) return;
